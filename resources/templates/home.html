@@ -4,7 +4,22 @@
 
   <div class="medium-6 medium-offset-3 columns">
     <h1 class="text-center">Nobody Likes Spoilers In Their Internets</h1>
-    <h3 class="text-center">Post Them Here Instead</h1>
+    <h3 class="text-center">Post Them Here Instead</h3>
+
+    <hr />
+    <div class="row">
+      <div class="medium-12 columns">
+        <form action="/spoiler" method="post">
+          <label>Spoiler Text
+            <textarea type="text" placeholder="This is the spoily bit" rows="4"></textarea>
+          </label>
+          <label>Mask Text
+            <input type="text" placeholder="Hide the spoiler behind these words" />
+          </label>
+          <button type="submit" class="button float-right">Submit</button>
+        </form>
+      </div>
+    </div>
   </div>
 
 </div>
