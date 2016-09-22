@@ -2,7 +2,6 @@
   (:require [spoily.handler :as handler]
             [luminus.repl-server :as repl]
             [luminus.http-server :as http]
-            [luminus-migrations.core :as migrations]
             [spoily.config :refer [env]]
             [clojure.tools.cli :refer [parse-opts]]
             [clojure.tools.logging :as log]
@@ -51,8 +50,6 @@
     (some #{"migrate" "rollback"} args)
     (do
       (mount/start #'spoily.config/env)
-      (migrations/migrate args (select-keys env [:database-url]))
       (System/exit 0))
     :else
     (start-app args)))
-  

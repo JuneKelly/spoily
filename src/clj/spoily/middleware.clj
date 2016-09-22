@@ -61,6 +61,7 @@
       (wrap-defaults
         (-> site-defaults
             (assoc-in [:security :anti-forgery] false)
+            (assoc-in [:static] false)
             (dissoc :session)))
       wrap-context
       wrap-internal-error))
