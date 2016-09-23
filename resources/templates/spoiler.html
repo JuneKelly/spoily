@@ -3,8 +3,51 @@
 <div class="row">
 
   <div class="medium-6 medium-offset-3 columns">
-    <h1 class="text-center">Spoiler {{ spoiler._id }}</h1>
+
+    <h1 class="text-center">Spoiler Warning!</h1>
+
+
+    <noscript>
+      <h1 style="margin-bottom: 200em;">
+        Hey, your browser doesn't support Javascript, Scroll down for the spoiler...
+      </h1>
+      <div style="margin-bottom: 12em;">
+        <h2>Spoiler:</h2>
+        <p>{{ spoiler.spoilerText }}</p>
+      </div>
+      <hr />
+    </noscript>
+
+    <div class="row">
+      <div class="medium-12 columns">
+
+        <!-- Begin VueJS app -->
+        <div id="spoiler-panel">
+
+          <p>
+            _id: <% spoiler._id %>
+          </p>
+
+        </div>
+        <!-- End VueJS app -->
+
+      </div>
+    </div>
+
   </div>
 
 </div>
+{% endblock %}
+
+{% block page-scripts %}
+
+  <script>
+    window.Spoiler = {{spoiler|json|safe}}
+  </script>
+
+  {% script "/static/vendor/js/vue.min.js" %}
+
+  {% script "/static/js/spoiler-page.js" %}
+
+
 {% endblock %}
