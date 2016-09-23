@@ -1,7 +1,7 @@
 (ns spoily.routes.home
   (:require [spoily.layout :as layout]
             [compojure.core :refer [defroutes GET]]
-            [ring.util.http-response :as response]
+            [ring.util.response :as response]
             [compojure.route :as route]
             [clojure.java.io :as io]))
 

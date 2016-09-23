@@ -2,6 +2,7 @@
   (:require [compojure.core :refer [routes wrap-routes]]
             [spoily.layout :refer [error-page]]
             [spoily.routes.home :refer [home-routes]]
+            [spoily.routes.spoilers :refer [spoiler-routes]]
             [compojure.route :as route]
             [spoily.env :refer [defaults]]
             [mount.core :as mount]
@@ -13,7 +14,9 @@
 
 (def app-routes
   (routes
-    (-> #'home-routes
+   (-> (routes
+        #'home-routes
+        #'spoiler-routes)
         (wrap-routes middleware/wrap-csrf)
         (wrap-routes middleware/wrap-formats))
     (route/not-found
