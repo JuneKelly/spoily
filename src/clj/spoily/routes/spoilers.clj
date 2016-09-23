@@ -21,7 +21,8 @@
   (let [spoiler (db/get-spoiler id)]
     (if (nil? spoiler)
       (response/not-found)
-      (layout/render "spoiler.html" {:spoiler spoiler}))))
+      (layout/render "spoiler.html" {:page-title "SPOILER"
+                                     :spoiler spoiler}))))
 
 
 (defroutes spoiler-routes
