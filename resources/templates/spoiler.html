@@ -22,22 +22,25 @@
       <div class="medium-12 columns">
 
         <!-- Begin VueJS app -->
-        <div id="spoiler-panel">
+        <div id="spoiler-panel" class="row">
+          <div class="medium-12 columns">
 
-          <div id="spoiler-mask"
-               class="text-center"
-               v-if="state.showSpoiler == false"
-               v-on:click="showSpoiler()">
-            <% spoiler.maskText %>
-            <br>
-            ...Click To Reveal
-          </div>
-          <div id="spoiler-text"
-               class="text-center"
-               v-else>
-            <% spoiler.spoilerText %>
-          </div>
+            <div id="spoiler-mask"
+                class="text-center"
+                v-if="state.showSpoiler == false"
+                v-on:click="showSpoiler()">
+              <% spoiler.maskText %>
+              <br>
+              ...Click To Reveal
+            </div>
+            <div id="spoiler-text"
+                class="text-center"
+                v-else>
+              <% spoiler.spoilerText %>
+            </div>
 
+
+          </div>
         </div>
         <!-- End VueJS app -->
 
