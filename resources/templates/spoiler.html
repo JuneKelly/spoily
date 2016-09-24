@@ -31,9 +31,9 @@
               <div class="spoiler-mask text-center"
                    v-if="state.showSpoiler == false"
                    v-on:click="showSpoiler()">
-                <% spoiler.maskText %>
+                <span class="mask-text"><% spoiler.maskText %></span>
                 <br>
-                ...Click To Reveal
+                <span class="click-prompt">(Click To Reveal)</span>
               </div>
               <div class="spoiler-text text-center"
                    v-else>
@@ -44,7 +44,8 @@
 
 
             <div class="spoiler-sharing-options">
-              <h4 class="text-center">Share This Spoiler</h4>
+              <hr />
+              <h3 class="text-center">Share This Spoiler</h3>
               <p>
                 <h5>Direct Link</h5>
                 <code><% directLink() %></code>
@@ -56,6 +57,17 @@
               <p>
                 <h5>BBCode (for various forums, etc)</h5>
                 <code><% bbcodeLink() %></code>
+              </p>
+              <hr />
+              <p>
+                <button class="button primary"
+                        v-on:click="toggleRawData()">
+                  <span v-if="state.showRawData">Hide Raw Data</span>
+                  <span v-else>Show Raw Data</span>
+                </button>
+                <div class="callout secondary" v-if="state.showRawData">
+                  <pre><% rawJson() %></pre>
+                </div>
               </p>
             </div>
 

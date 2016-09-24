@@ -15,6 +15,8 @@ html, body {
     padding: 24px;
     font-size: 1.4em;
     background-color: #e6e6e6; }
+    #spoiler-vue-app .spoiler-wrapper .spoiler-mask .mask-text {
+      font-size: 1.4em; }
     #spoiler-vue-app .spoiler-wrapper .spoiler-mask:hover {
       cursor: pointer; }
   #spoiler-vue-app .spoiler-wrapper .spoiler-text {

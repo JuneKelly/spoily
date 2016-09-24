@@ -38,6 +38,9 @@ html, body {
       padding: 24px;
       font-size: 1.4em;
       background-color: $light-gray;
+      .mask-text {
+        font-size: 1.4em;
+      }
       &:hover {
         cursor: pointer;
       }

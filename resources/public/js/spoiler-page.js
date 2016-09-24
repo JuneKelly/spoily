@@ -15,7 +15,8 @@
     data: {
       spoiler: window.Spoiler,
       state: {
-        showSpoiler: false
+        showSpoiler: false,
+        showRawData: false
       }
     },
     methods: {
@@ -36,6 +37,12 @@
         var link = this.directLink();
         var maskText = this.spoiler.maskText;
         return "[url=" + link + "]" + maskText + "[/url]";
+      },
+      toggleRawData: function() {
+        this.state.showRawData = !this.state.showRawData;
+      },
+      rawJson: function() {
+        return JSON.stringify(this.spoiler, null, 2);
       }
     }
   });
