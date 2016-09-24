@@ -24,9 +24,19 @@
         <!-- Begin VueJS app -->
         <div id="spoiler-panel">
 
-          <p>
-            _id: <% spoiler._id %>
-          </p>
+          <div id="spoiler-mask"
+               class="text-center"
+               v-if="state.showSpoiler == false"
+               v-on:click="showSpoiler()">
+            <% spoiler.maskText %>
+            <br>
+            ...Click To Reveal
+          </div>
+          <div id="spoiler-text"
+               class="text-center"
+               v-else>
+            <% spoiler.spoilerText %>
+          </div>
 
         </div>
         <!-- End VueJS app -->

@@ -17,7 +17,15 @@
       state: {
         showSpoiler: false
       }
+    },
+    methods: {
+      showSpoiler: function() {
+        console.log('>> show spoiler');
+        this.state.showSpoiler = true;
+      }
     }
   });
+
+  window.VueApp = vue;
 
 })(window);

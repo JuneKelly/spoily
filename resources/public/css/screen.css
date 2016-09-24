@@ -7,3 +7,18 @@ html, body {
 
 #main-content {
   padding-top: 12px; }
+
+#spoiler-panel {
+  min-height: 100px; }
+  #spoiler-panel #spoiler-mask {
+    padding: 24px;
+    font-size: 1.4em;
+    background-color: #cacaca;
+    min-height: 100px; }
+    #spoiler-panel #spoiler-mask:hover {
+      cursor: pointer; }
+  #spoiler-panel #spoiler-text {
+    padding: 24px;
+    font-size: 1.4em;
+    border: 1px solid #cacaca;
+    min-height: 100px; }
