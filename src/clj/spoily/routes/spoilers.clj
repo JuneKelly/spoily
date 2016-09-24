@@ -24,7 +24,7 @@
   (let [spoiler (db/get-spoiler-by-slug slug)]
     (if (nil? spoiler)
       (response/not-found)
-      (layout/render "spoiler.html" {:page-title "SPOILER"
+      (layout/render "spoiler.html" {:page-title "Spoiler Warning!"
                                      :spoiler spoiler}))))
 
 
