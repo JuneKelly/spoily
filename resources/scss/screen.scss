@@ -1,3 +1,21 @@
+// screen.scss
+
+// copy pasta from foundation scss source code
+$foundation-palette: (
+  primary: #2199e8,
+  secondary: #777,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #ec5840,
+);
+$light-gray: #e6e6e6;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$black: #0a0a0a;
+$white: #fefefe;
+
+
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     height: 100%;
@@ -17,7 +35,7 @@ html, body {
   #spoiler-mask {
     padding: 24px;
     font-size: 1.4em;
-    background-color: #cacaca;
+    background-color: $light-gray;
     min-height: 100px;
     &:hover {
       cursor: pointer;
@@ -26,7 +44,7 @@ html, body {
   #spoiler-text {
     padding: 24px;
     font-size: 1.4em;
-    border: 1px solid #cacaca;
+    border: 1px solid $light-gray;
     min-height: 100px;
   }
 }
