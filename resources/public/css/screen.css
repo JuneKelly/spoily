@@ -3,7 +3,8 @@ html, body {
   height: 100%; }
 
 #logo-link {
-  padding: 0px; }
+  padding: 0px;
+  padding-bottom: 2px; }
 
 #main-content {
   padding-top: 12px; }
