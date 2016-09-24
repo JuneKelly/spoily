@@ -9,17 +9,19 @@ html, body {
 #main-content {
   padding-top: 12px; }
 
-#spoiler-panel {
-  min-height: 100px; }
-  #spoiler-panel #spoiler-mask {
+#spoiler-vue-app .spoiler-wrapper {
+  min-height: 200px; }
+  #spoiler-vue-app .spoiler-wrapper .spoiler-mask {
     padding: 24px;
     font-size: 1.4em;
-    background-color: #e6e6e6;
-    min-height: 100px; }
-    #spoiler-panel #spoiler-mask:hover {
+    background-color: #e6e6e6; }
+    #spoiler-vue-app .spoiler-wrapper .spoiler-mask:hover {
       cursor: pointer; }
-  #spoiler-panel #spoiler-text {
+  #spoiler-vue-app .spoiler-wrapper .spoiler-text {
     padding: 24px;
     font-size: 1.4em;
-    border: 1px solid #e6e6e6;
-    min-height: 100px; }
+    border: 1px solid #e6e6e6; }
+
+#spoiler-vue-app .spoiler-sharing-options {
+  margin-top: 1em;
+  padding-bottom: 4em; }

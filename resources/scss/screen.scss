@@ -31,21 +31,25 @@ html, body {
 }
 
 
-#spoiler-panel {
-  min-height: 100px;
-  #spoiler-mask {
-    padding: 24px;
-    font-size: 1.4em;
-    background-color: $light-gray;
-    min-height: 100px;
-    &:hover {
-      cursor: pointer;
+#spoiler-vue-app {
+  .spoiler-wrapper {
+    min-height: 200px;
+    .spoiler-mask {
+      padding: 24px;
+      font-size: 1.4em;
+      background-color: $light-gray;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .spoiler-text {
+      padding: 24px;
+      font-size: 1.4em;
+      border: 1px solid $light-gray;
     }
   }
-  #spoiler-text {
-    padding: 24px;
-    font-size: 1.4em;
-    border: 1px solid $light-gray;
-    min-height: 100px;
+  .spoiler-sharing-options {
+    margin-top: 1em;
+    padding-bottom: 4em;
   }
 }
