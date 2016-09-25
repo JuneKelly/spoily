@@ -10,19 +10,37 @@
 
     <div class="row">
       <div class="medium-12 columns">
-        <form action="/spoiler" method="post">
+        <form action="/spoiler" method="post" data-abide novalidate>
+
+          <div data-abide-error class="alert callout" style="display: none;">
+            <p><i class="fi-alert"></i> There are some errors in your form.</p>
+          </div>
+
           <label>Spoiler Text
             <textarea type="text"
                       name="spoilerText"
-                      placeholder="This is the spoily bit" rows="4"></textarea>
+                      placeholder="This is the spoily bit" rows="4"
+                      pattern="min_2" required></textarea>
+            <span class="form-error">
+              Required Field. Minimum 2 characters.
+            </span>
           </label>
+
           <label>Mask Text
             <input type="text"
                    name="maskText"
-                   placeholder="Hide the spoiler behind these words" />
+                   placeholder="Hide the spoiler behind these words"
+                   required
+                   pattern="min_2" />
+            <span class="form-error">
+              Required Field. Minimum 2 characters.
+            </span>
           </label>
+
           {% csrf-field %}
+
           <button type="submit" class="button float-right">Submit</button>
+
         </form>
       </div>
     </div>
