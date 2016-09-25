@@ -34,3 +34,5 @@ img.spoily-demo-gif {
 #spoiler-vue-app .spoiler-sharing-options {
   margin-top: 1em;
   padding-bottom: 4em; }
+  #spoiler-vue-app .spoiler-sharing-options p {
+    margin-bottom: 24px; }
