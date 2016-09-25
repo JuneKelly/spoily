@@ -39,6 +39,10 @@ img.spoily-demo-gif {
   box-shadow:         4px 4px 16px 0px rgba(50, 50, 50, 0.36);
 }
 
+[v-cloak] {
+  display: none;
+}
+
 
 #spoiler-vue-app {
   .spoiler-wrapper {

@@ -16,6 +16,9 @@ img.spoily-demo-gif {
   -moz-box-shadow: 4px 4px 16px 0px rgba(50, 50, 50, 0.36);
   box-shadow: 4px 4px 16px 0px rgba(50, 50, 50, 0.36); }
 
+[v-cloak] {
+  display: none; }
+
 #spoiler-vue-app .spoiler-wrapper {
   min-height: 200px; }
   #spoiler-vue-app .spoiler-wrapper .spoiler-mask {
