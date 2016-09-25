@@ -12,20 +12,22 @@
   (let [spoiler-text (get-in req [:params :spoilerText])
         mask-text    (get-in req [:params :maskText])
         new-spoiler-slug (random/url-part 9)
-        new-spoiler-id (db/save-spoiler {:spoilerText spoiler-text
+        new-spoiler-id (db/save-spoiler {:_id         new-spoiler-slug
+                                         :spoilerText spoiler-text
                                          :maskText    mask-text
-                                         :slug        new-spoiler-slug
                                          :created     (iso-now)})]
-    (log/info (str "create spoiler: " new-spoiler-id " - " new-spoiler-slug))
+    (log/info (str "create spoiler: " new-spoiler-slug))
     (response/redirect (str "/s/" new-spoiler-slug))))
 
 
 (defn view-spoiler [slug]
-  (let [spoiler (db/get-spoiler-by-slug slug)]
+  (let [spoiler (db/get-spoiler slug)]
     (if (nil? spoiler)
       (response/not-found)
-      (layout/render "spoiler.html" {:page-title "Spoiler Warning!"
-                                     :spoiler spoiler}))))
+      (do
+        (log/info (str "view spoiler: " slug))
+        (layout/render "spoiler.html" {:page-title "Spoiler Warning!"
+                                      :spoiler spoiler})))))
 
 
 (defroutes spoiler-routes

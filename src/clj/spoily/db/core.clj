@@ -16,9 +16,5 @@
   (bq/find-one-by-id *db* "spoilers" id))
 
 
-(defn get-spoiler-by-slug [slug]
-  (bq/find-one *db* "spoilers" {:slug slug}))
-
-
 (defn save-spoiler [spoiler]
   (bq/save *db* "spoilers" spoiler))
