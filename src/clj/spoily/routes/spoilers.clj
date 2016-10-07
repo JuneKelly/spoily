@@ -11,10 +11,12 @@
 (defn create-spoiler [req]
   (let [spoiler-text (get-in req [:params :spoilerText])
         mask-text    (get-in req [:params :maskText])
+        topic        (get-in req [:params :topic])
         new-spoiler-slug (random/url-part 9)
         new-spoiler-id (db/save-spoiler {:_id         new-spoiler-slug
                                          :spoilerText spoiler-text
                                          :maskText    mask-text
+                                         :topic       topic
                                          :created     (iso-now)})]
     (log/info (str "create spoiler: " new-spoiler-slug))
     (response/redirect (str "/s/" new-spoiler-slug))))

@@ -4,7 +4,11 @@
 
   <div class="medium-6 medium-offset-3 columns">
 
+    {% if spoiler.topic %}
+    <h1 class="text-center">Spoilers for {{spoiler.topic}}!</h1>
+    {% else %}
     <h1 class="text-center">Spoiler Warning!</h1>
+    {% endif %}
 
     <br />
 

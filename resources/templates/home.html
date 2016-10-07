@@ -37,6 +37,13 @@
             </span>
           </label>
 
+          <label>Topic <small>(optional)</small>
+            <input type="text"
+                   name="topic"
+                   placeholder="What's show/film/book/etc this spoiler about?"
+                   pattern="min_2" />
+          </label>
+
           {% csrf-field %}
 
           <button type="submit" class="button float-right">Submit</button>
