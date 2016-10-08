@@ -10,7 +10,7 @@
 
     <div class="row">
       <div class="medium-12 columns">
-        <form action="/spoiler" method="post" data-abide novalidate>
+        <form action="/spoiler" method="post" class="ui-front" data-abide novalidate>
 
           <div data-abide-error class="alert callout" style="display: none;">
             <p><i class="fi-alert"></i> There are some errors in your form.</p>
@@ -61,4 +61,27 @@
   </div>
 
 </div>
+{% endblock %}
+
+{% block page-scripts %}
+
+<script>
+  $(function() {
+    var availableTopics = [
+      "Game of Thrones",
+      "Demon's Souls",
+      "Dark Souls",
+      "Dark Souls 2",
+      "Dark Souls 3",
+      "Bloodborne"
+    ];
+    setTimeout(function() {
+      $('input[name="topic"]').autocomplete({
+        source: availableTopics
+      });
+    }, 100);
+  });
+</script>
+
+
 {% endblock %}
