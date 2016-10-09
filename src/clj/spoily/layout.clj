@@ -1,6 +1,7 @@
 (ns spoily.layout
   (:require [selmer.parser :as parser]
             [selmer.filters :as filters]
+            [spoily.config :refer [env]]
             [markdown.core :refer [md-to-html-string]]
             [ring.util.http-response :refer [content-type ok]]
             [ring.util.anti-forgery :refer [anti-forgery-field]]
@@ -19,10 +20,12 @@
     (ok
       (parser/render-file
         template
-        (assoc params
-          :page template
-          :csrf-token *anti-forgery-token*
-          :servlet-context *app-context*)))
+        (-> params
+            (assoc
+             :page template
+             :csrf-token *anti-forgery-token*
+             :servlet-context *app-context*)
+            (merge (select-keys env [:site-name])))))
     "text/html; charset=utf-8"))
 
 (defn error-page
