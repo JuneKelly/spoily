@@ -72,3 +72,8 @@ img.spoily-demo-gif {
     }
   }
 }
+
+// restrict width of the topic autocomplete
+ul.ui-autocomplete {
+  max-width: 400px;
+}
