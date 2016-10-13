@@ -12,6 +12,14 @@
       <div class="medium-12 columns">
         <form action="/spoiler" method="post" class="ui-front" data-abide novalidate>
 
+          {% if error %}
+          <div class="callout alert">
+            Error: {{ error }}
+          </div>
+          <br />
+          {% endif %}
+
+
           <div data-abide-error class="alert callout" style="display: none;">
             <p><i class="fi-alert"></i> There are some errors in your form.</p>
           </div>
@@ -20,28 +28,32 @@
             <textarea type="text"
                       name="spoilerText"
                       placeholder="This is the spoily bit" rows="4"
-                      pattern="min_2" required></textarea>
+                      pattern="min_2_max_10000" required>{{ spoiler.spoilerText }}</textarea>
             <span class="form-error">
-              Required Field. Minimum 2 characters.
+              Required Field. Minimum 2 characters, maximum 10000
             </span>
           </label>
 
           <label>Mask Text
             <input type="text"
                    name="maskText"
+                   value="{{ spoiler.maskText }}"
                    placeholder="Hide the spoiler behind these words"
-                   required
-                   pattern="min_2" />
+                   pattern="min_2_max_512" required/>
             <span class="form-error">
-              Required Field. Minimum 2 characters.
+              Required Field. Minimum 2 characters, maximum 512
             </span>
           </label>
 
           <label>Topic <small>(optional)</small>
             <input type="text"
                    name="topic"
+                   value="{{ spoiler.topic }}"
                    placeholder="What show/film/book/etc is this spoiler about?"
-                   pattern="min_2" />
+                   pattern="min_2_max_256" />
+            <span class="form-error">
+              Minimum 2 characters, maximum 256
+            </span>
           </label>
 
           {% csrf-field %}

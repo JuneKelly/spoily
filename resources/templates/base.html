@@ -71,6 +71,9 @@
       var context = "{{servlet-context}}";
       $(document).foundation();
       Foundation.Abide.defaults.patterns['min_2'] = /^.{2,}$/
+      Foundation.Abide.defaults.patterns['min_2_max_256'] = /^.{2,256}$/
+      Foundation.Abide.defaults.patterns['min_2_max_512'] = /^.{2,512}$/
+      Foundation.Abide.defaults.patterns['min_2_max_10000'] = /^.{2,10000}$/
     </script>
 
     {% block page-scripts %}

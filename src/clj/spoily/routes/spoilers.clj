@@ -5,21 +5,35 @@
             [spoily.db.core :as db]
             [spoily.util :refer [iso-now]]
             [crypto.random :as random]
+            [bouncer.core :as bouncer]
+            [bouncer.validators :as v]
             [ring.util.response :as response]))
 
 
+(defn valid-spoiler? [spoiler]
+  (bouncer/valid?
+   spoiler
+   :spoilerText [v/required [v/min-count 2] [v/max-count 10000]]
+   :maskText    [v/required [v/min-count 2] [v/max-count 512]]
+   :topic       [[v/min-count 2] [v/max-count 256]]))
+
+
 (defn create-spoiler [req]
-  (let [spoiler-text (get-in req [:params :spoilerText])
-        mask-text    (get-in req [:params :maskText])
-        topic        (get-in req [:params :topic])
-        new-spoiler-slug (random/url-part 9)
-        new-spoiler-id (db/save-spoiler {:_id         new-spoiler-slug
-                                         :spoilerText spoiler-text
-                                         :maskText    mask-text
-                                         :topic       topic
-                                         :created     (iso-now)})]
-    (log/info (str "create spoiler: " new-spoiler-slug))
-    (response/redirect (str "/s/" new-spoiler-slug))))
+  (let [spoiler (select-keys (req :params) [:spoilerText :maskText :topic])]
+    (if (valid-spoiler? spoiler)
+      (let [new-spoiler-slug (random/url-part 9)]
+        (-> {:_id new-spoiler-slug
+             :created (iso-now)}
+            (merge spoiler)
+            (db/save-spoiler))
+        (log/info (str "create spoiler: " new-spoiler-slug))
+        (response/redirect (str "/s/" new-spoiler-slug)))
+      (do
+        (log/info (str "validation failed"))
+        (layout/render "home.html"
+                       {:page-title "Spoily"
+                        :error "Not a valid spoiler"
+                        :spoiler spoiler})))))
 
 
 (defn view-spoiler [slug]
