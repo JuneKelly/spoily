@@ -19,5 +19,6 @@
 (defn save-spoiler [spoiler]
   (bq/save *db* "spoilers" spoiler))
 
+
 (defn health-check []
   (bq/collection-exists? *db* "spoilers"))
