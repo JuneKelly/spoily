@@ -70,6 +70,14 @@ img.spoily-demo-gif {
     p {
       margin-bottom: 24px;
     }
+    .share-text {
+      background-color: $light-gray;
+      border: 1px solid $medium-gray;
+      font-family: monospace;
+      font-size: 1.3em;
+      padding: 8px;
+      word-break: break-all;
+    }
   }
 }
 

@@ -39,6 +39,13 @@ img.spoily-demo-gif {
   /* padding-bottom: 4em; */ }
   #spoiler-vue-app .spoiler-sharing-options p {
     margin-bottom: 24px; }
+  #spoiler-vue-app .spoiler-sharing-options .share-text {
+    background-color: #e6e6e6;
+    border: 1px solid #cacaca;
+    font-family: monospace;
+    font-size: 1.3em;
+    padding: 8px;
+    word-break: break-all; }
 
 ul.ui-autocomplete {
   max-width: 400px; }
