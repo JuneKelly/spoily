@@ -10,6 +10,20 @@
             [bouncer.validators :as v]
             [ring.util.response :as response]))
 
+(defn health-check [req]
+  (let [db-ok (db/health-check)]
+    (if db-ok
+      (do
+        (log/info "Health-check success")
+        {:status 200,
+        :headers {"Content-Type" "text/plain"}
+        :body "ok"})
+      (do
+        (log/error "Health-check failed")
+        {:status 500,
+        :headers {"Content-Type" "text/plain"}
+        :body "failed"}))))
+
 
 (defn render-home-page [options]
   (layout/render "home.html"
@@ -61,6 +75,8 @@
 
 (defroutes home-routes
   (GET "/" req (home-page req))
+  (GET "/status" [] "spoily is up")
+  (GET "/health_check" req (health-check req))
   (GET "/about" [] (about-page))
   (route/resources "/static")
   (POST "/spoiler" [] create-spoiler)
