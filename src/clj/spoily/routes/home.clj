@@ -42,7 +42,7 @@
 (defn valid-spoiler? [spoiler]
   (bouncer/valid?
    spoiler
-   :spoilerText [v/required [v/min-count 2] [v/max-count 10000]]
+   :spoilerText [v/required [v/min-count 2] [v/max-count 10]]
    :maskText    [v/required [v/min-count 2] [v/max-count 512]]
    :topic       [[v/min-count 2] [v/max-count 256]]))
 
@@ -58,7 +58,11 @@
         (log/info (str "Create spoiler: " new-spoiler-slug))
         (response/redirect (str "/s/" new-spoiler-slug)))
       (do
-        (log/info (str "Validation failed"))
+        (log/info (str "Validation failed: "
+                       (clojure.string/join
+                        ","
+                        (map (fn [[k, v]] (str k "=" (count v)))
+                             spoiler))))
         (render-home-page {:error "Not a valid spoiler"
                            :spoiler spoiler})))))
 
