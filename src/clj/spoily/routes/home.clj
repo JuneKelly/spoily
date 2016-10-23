@@ -27,9 +27,10 @@
 
 
 (defn render-home-page [options]
-  (layout/render "home.html"
-                 (merge {:page-title "Spoily" :error nil :spoiler nil}
-                        options)))
+  (let [site-name (or (:site-name env) "spoily")]
+    (layout/render "home.html"
+                  (merge {:page-title (str site-name ", share spoilers") :error nil :spoiler nil}
+                          options))))
 
 (defn home-page [req]
   (log/info "View home page")
