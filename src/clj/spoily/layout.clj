@@ -25,7 +25,7 @@
              :page template
              :csrf-token *anti-forgery-token*
              :servlet-context *app-context*)
-            (merge (select-keys env [:site-name])))))
+            (merge (select-keys env [:site-name :ga-tracking-code])))))
     "text/html; charset=utf-8"))
 
 (defn error-page
