@@ -3,6 +3,7 @@
             [compojure.core :refer [defroutes GET POST]]
             [compojure.route :as route]
             [clojure.tools.logging :as log]
+            [spoily.config :refer [env]]
             [spoily.db.core :as db]
             [spoily.util :refer [iso-now]]
             [crypto.random :as random]
@@ -77,11 +78,29 @@
                                       :spoiler spoiler})))))
 
 
+(defn sitemap-xml [req]
+  (let [base-url (or (:base-url env) "http://localhost:3000")]
+    {:status 200,
+     :headers {"Content-Type" "text/xml"}
+     :body
+     (str
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+       <urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">
+         <url>
+           <loc>" base-url "</loc>
+         </url>
+         <url>
+           <loc>" base-url "/about</loc>
+         </url>
+       </urlset>")}))
+
+
 (defroutes home-routes
   (GET "/" req (home-page req))
   (GET "/status" [] "spoily is up")
   (GET "/health_check" req (health-check req))
   (GET "/about" [] (about-page))
+  (GET "/sitemap.xml" req (sitemap-xml req))
   (route/resources "/static")
   (POST "/spoiler" [] create-spoiler)
   (GET "/spoiler" [] (response/redirect "/"))
