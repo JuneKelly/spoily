@@ -1,4 +1,4 @@
-(defproject spoily "1.3.0"
+(defproject spoily "1.4.0"
 
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
