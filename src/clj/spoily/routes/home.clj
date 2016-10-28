@@ -53,9 +53,13 @@
   (let [spoiler (select-keys (req :params) [:spoilerText :maskText :topic])]
     (if (valid-spoiler? spoiler)
       (let [new-spoiler-slug (random/url-part 9)]
-        (-> {:_id new-spoiler-slug
-             :created (iso-now)}
-            (merge spoiler)
+        (-> spoiler
+            (merge {:_id new-spoiler-slug
+                    :created (iso-now)
+                    :topic (let [topic (:topic spoiler)]
+                             (if (= topic "")
+                               nil
+                               topic))})
             (db/save-spoiler))
         (log/info (str "Create spoiler: " new-spoiler-slug))
         (response/redirect (str "/s/" new-spoiler-slug)))
