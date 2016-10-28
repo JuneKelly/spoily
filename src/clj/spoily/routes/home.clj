@@ -46,7 +46,7 @@
    spoiler
    :spoilerText [v/required [v/min-count 2] [v/max-count 10000]]
    :maskText    [v/required [v/min-count 2] [v/max-count 512]]
-   :topic       [[v/min-count 2] [v/max-count 256]]))
+   :topic       [[v/max-count 256]]))
 
 
 (defn create-spoiler [req]
